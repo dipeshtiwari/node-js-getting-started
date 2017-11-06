@@ -40,6 +40,12 @@ app.get('/new-one', function(request, response) {
     response.send('new-one');
 });
 
+app.get('/new-two', function(request, response) {
+    response.send('new-two');
+});
+
+
+
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
