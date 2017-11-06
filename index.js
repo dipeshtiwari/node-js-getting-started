@@ -38,6 +38,10 @@ app.get('/hello', function(request, response) {
     response.send('hello');
 });
 
+app.get('/hello-api', function(request, response) {
+    response.send('hello-sss');
+});
+
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
