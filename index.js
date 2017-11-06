@@ -24,8 +24,6 @@ app.set('superSecret', config.secret); // secret variable
 
 app.set('port', (process.env.PORT || 8080));
 
-//app.use(express.static(__dirname + '/public'));
-
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -37,6 +35,11 @@ app.get('/', function(request, response) {
 app.get('/hello', function(request, response) {
     response.send('hello');
 });
+
+app.get('/new-one', function(request, response) {
+    response.send('new-one');
+});
+
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
