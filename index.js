@@ -24,8 +24,6 @@ app.set('superSecret', config.secret); // secret variable
 
 app.set('port', (process.env.PORT || 8080));
 
-//app.use(express.static(__dirname + '/public'));
-
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -34,9 +32,7 @@ app.get('/', function(request, response) {
     response.render('pages/index');
 });
 
-app.get('/hello', function(request, response) {
-    response.send('hello');
-});
+app.use('/api', require('./app/routes/routes.js'));
 
 app.get('/hello-api', function(request, response) {
     response.send('hello-sss-dfdf');
