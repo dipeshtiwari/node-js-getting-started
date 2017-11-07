@@ -34,6 +34,10 @@ app.get('/', function(request, response) {
     response.render('pages/index');
 });
 
+app.get('/hello-world', function(request, response) {
+    response.send('hello world');
+});
+
 //common routes for multiple routes
 app.use('/api', require('./app/routes/routes.js'));
 
