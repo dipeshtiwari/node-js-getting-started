@@ -41,11 +41,8 @@ app.get('/new-one', function(request, response) {
 });
 
 app.get('/new-two', function(request, response) {
-    response.send('new-two');
+    response.send('new-two-dfdf');
 });
-
-
-
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
