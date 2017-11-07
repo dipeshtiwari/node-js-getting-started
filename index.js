@@ -36,8 +36,8 @@ app.get('/hello', function(request, response) {
     response.send('hello');
 });
 
-app.get('/new-one', function(request, response) {
-    response.send('new-one');
+app.get('/production', function(request, response) {
+    response.send('production');
 });
 
 app.get('/new-two', function(request, response) {
