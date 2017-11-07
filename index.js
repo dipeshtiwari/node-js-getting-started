@@ -32,17 +32,7 @@ app.get('/', function(request, response) {
     response.render('pages/index');
 });
 
-app.get('/hello', function(request, response) {
-    response.send('hello');
-});
-
-app.get('/new-one', function(request, response) {
-    response.send('new-one');
-});
-
-app.get('/new-two', function(request, response) {
-    response.send('new-two-dfdf');
-});
+app.use('/api', require('./app/routes/routes.js'));
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
