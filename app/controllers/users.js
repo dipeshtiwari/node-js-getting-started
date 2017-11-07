@@ -2,7 +2,7 @@ var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var Users = require('../models/users');
 
-
+//get users
 exports.getUsers = function(req, res) {
     Users.find({}, function(err, users) {
         if (err)
@@ -25,12 +25,14 @@ exports.login = function(req, res, next) {
 
         if (!user) {
             return res.status(500).json({
+                status: false,
                 message: 'User not found with this email id.'
             });
         }
 
         if (err) {
             res.status(500).json({
+                status: false,
                 message: 'Error in logging.'
             });
         } else {
@@ -55,6 +57,7 @@ exports.register = function(req, res, next) {
     var register = new Users(req.body);
     if (isEmailExists(req.body.email)) {
         return res.status(500).json({
+            status: false,
             message: 'User already exist with this email id.'
         });
     }
@@ -66,17 +69,18 @@ exports.register = function(req, res, next) {
         register.save(function(err) {
             if (!err) {
                 res.status(200).json({
+                    status: false,
                     message: 'You are registered successfully.'
                 });
             } else {
                 res.status(401).json({
+                    status: false,
                     message: 'Error in registering user.'
                 });
             }
         });
     });
 }
-
 
 exports.logout = function(req, res, next) {
 

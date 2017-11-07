@@ -1,9 +1,9 @@
 //initialize
 var ex = require('express');
 var jwt = require('jsonwebtoken');
-
 var router = ex.Router();
 
+//access token verification
 router.use(function(req, res, next) {
     console.log('path', req.originalUrl)
     var token = req.body.access_token || req.query.access_token || req.headers['access_token'];
@@ -20,7 +20,6 @@ router.use(function(req, res, next) {
             }
         });
     } else {
-
         if (req.originalUrl == '/api/user/login' || req.originalUrl == '/api/user/register') {
             next();
         } else {
