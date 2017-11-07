@@ -8,9 +8,12 @@ var bodyParser = require('body-parser'); // pull information from HTML POST (exp
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var cors = require('cors');
 
+//set port number ot listen
+app.set('port', (process.env.PORT || 8080));
+//app config file
 var config = require('./config/app.config');
 
-//db config
+//db config file
 var database = require('./config/database');
 
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
@@ -22,22 +25,19 @@ app.use(methodOverride());
 app.use(cors());
 app.set('superSecret', config.secret); // secret variable
 
-app.set('port', (process.env.PORT || 8080));
-
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+//root api thats render page
 app.get('/', function(request, response) {
     response.render('pages/index');
 });
 
+//common routes for multiple routes
 app.use('/api', require('./app/routes/routes.js'));
 
-app.get('/hello-api', function(request, response) {
-    response.send('hello-sss-dfdf');
-});
-
+//listen port number
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });

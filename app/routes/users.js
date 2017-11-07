@@ -5,11 +5,10 @@ var Users = require('../controllers/users');
 // expose the routes to our app with module.exports
 module.exports = function(app) {
     // api ---------------------------------------------------------------------
-    // get all todos
-    app.get('users', function(req, res) {
+    // get all users
+    app.get('/getUsers', Users.getUsers);
 
-    });
-
+    //
     app.post('/user/image', upload.single('avatar'), function(req, res) {
         console.log('req', req.file);
         res.json({
@@ -20,6 +19,7 @@ module.exports = function(app) {
     // create todo and send back all todos after creation
     app.post('/user/register', Users.register);
 
+    //user login
     app.post('/user/login', Users.login);
 
     // delete a todo
