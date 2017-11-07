@@ -53,7 +53,6 @@ exports.login = function(req, res, next) {
 //user register
 exports.register = function(req, res, next) {
     var register = new Users(req.body);
-
     if (isEmailExists(req.body.email)) {
         return res.status(500).json({
             message: 'User already exist with this email id.'
@@ -62,7 +61,7 @@ exports.register = function(req, res, next) {
 
     //bcrypt for password hashing
     bcrypt.hash(req.body.password, 5, function(err, bcryptedPassword) {
-        console.log(bcryptedPassword);
+
         register.password = bcryptedPassword;
         register.save(function(err) {
             if (!err) {

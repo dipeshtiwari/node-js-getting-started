@@ -5,9 +5,9 @@ var jwt = require('jsonwebtoken');
 var router = ex.Router();
 
 router.use(function(req, res, next) {
-    console.log('request', req);
+    console.log('path', req.originalUrl)
     var token = req.body.access_token || req.query.access_token || req.headers['access_token'];
-    console.log('token', token)
+
     if (token) {
         // verifies secret and checks exp
         jwt.verify(token, 'hello-computer', function(err, decoded) {
@@ -20,11 +20,15 @@ router.use(function(req, res, next) {
             }
         });
     } else {
-        next();
-        // return res.status(403).send({
-        //     success: false,
-        //     message: 'No token provided.'
-        // });
+
+        if (req.originalUrl == '/api/user/login' || req.originalUrl == '/api/user/register') {
+            next();
+        } else {
+            return res.status(403).send({
+                success: false,
+                message: 'No token provided.'
+            });
+        }
     }
 })
 
