@@ -20,7 +20,7 @@ router.use(function(req, res, next) {
             }
         });
     } else {
-        if (req.originalUrl == '/api/user/login' || req.originalUrl == '/api/user/register') {
+        if (req.originalUrl == '/api/user/login' || req.originalUrl == '/api/user/register' || req.originalUrl == '/api/user/forgotPassword') {
             next();
         } else {
             return res.status(403).send({

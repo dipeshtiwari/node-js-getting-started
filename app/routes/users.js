@@ -1,6 +1,7 @@
 var multer = require('multer')
-var upload = multer({ dest: 'uploads/' })
-    // load the todo model
+var upload = multer({ dest: 'uploads/' });
+
+// load the todo model
 var Users = require('../controllers/users');
 // expose the routes to our app with module.exports
 module.exports = function(app) {
@@ -23,7 +24,7 @@ module.exports = function(app) {
     app.post('/user/login', Users.login);
 
     // delete a todo
-    app.delete('/todos/:todo_id', function(req, res) {
+    app.delete('/todos/:todo_id', function(req, res) {});
 
-    });
+    app.post('/user/forgotPassword', Users.forgotPassword);
 };

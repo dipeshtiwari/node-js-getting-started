@@ -10,6 +10,7 @@ var cors = require('cors');
 
 //set port number ot listen
 app.set('port', (process.env.PORT || 8080));
+//app.set('env', )
 //app config file
 var config = require('./config/app.config');
 
