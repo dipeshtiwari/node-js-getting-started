@@ -12,12 +12,12 @@ var cors = require('cors');
 app.set('port', (process.env.PORT || 8080));
 //app.set('env', )
 //app config file
-var config = require('./config/app.config');
+var config = require('./app/config/app.config');
 
 //db config file
-var database = require('./config/database');
+var database = require('./app/config/database');
 
-app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/dist')); // set the static files location /public/img will be /img for users
 app.use(morgan('dev')); // log every request to the console
 app.use(bodyParser.urlencoded({ 'extended': 'true' })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
@@ -31,9 +31,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 //root api thats render page
-app.get('/', function(request, response) {
-    response.render('pages/index');
-});
+// app.get('/', function(request, response) {
+//     response.render('pages/index');
+// });
 
 app.get('/hello-world', function(request, response) {
     response.send('hello world');
