@@ -17,6 +17,8 @@ var config = require('./config/app.config');
 //db config file
 var database = require('./config/database');
 
+var fileUpload = require('./app/helper/fileupload');
+
 //set portnumber ot listen
 app.set('port', (process.env.PORT || config.port));
 // set secret variable
@@ -26,7 +28,6 @@ app.set('superSecret', config.secret);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 app.use(morgan('dev', { stream: accessLogStream })); // log every request to the console
 app.use(bodyParser.urlencoded({ 'extended': 'true' })); // parse application/x-www-form-urlencoded
@@ -35,10 +36,13 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 app.use(cors());
 
-//root api thats render page
-app.get('/', function(request, response) {
-    response.render('pages/index');
+app.post('/fileUpload', fileUpload.upload.single('image'), (req, res, next) => {
+    res.status(200).json({ 'message': 'File uploaded successfully' });
 });
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+})
 
 app.get('/test', function(request, response) {
     response.status(200).json({ 'meessage': 'success' });

@@ -1,3 +1,10 @@
 [0mGET /test [32m200 [0m4.103 ms - 22[0m
 [0mGET /favicon.ico [33m404 [0m2.415 ms - 150[0m
 [0mGET / [32m200 [0m286.606 ms - 6965[0m
+[0mPOST /fileUpload [32m200 [0m16.677 ms - 40[0m
+[0mPOST /fileUpload [32m200 [0m31.459 ms - 40[0m
+[0mPOST /fileUpload [32m200 [0m77.033 ms - 40[0m
+[0mPOST /fileUpload [32m200 [0m17.345 ms - 40[0m
+[0mPOST /fileUpload [32m200 [0m21.487 ms - 40[0m
+[0mPOST /fileUpload [32m200 [0m16.366 ms - 40[0m
+[0mPOST /fileUpload [32m200 [0m16.999 ms - 40[0m
