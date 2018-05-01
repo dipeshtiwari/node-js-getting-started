@@ -40,11 +40,12 @@ app.post('/fileUpload', fileUpload.upload.single('image'), (req, res, next) => {
     res.status(200).json({ 'message': 'File uploaded successfully' });
 });
 
+//export the index.html form public
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
-})
+});
 
-app.get('/test', function(request, response) {
+app.get('/api/test', function(request, response) {
     response.status(200).json({ 'meessage': 'success' });
 });
 
