@@ -35,5 +35,5 @@ router.use(function(req, res, next) {
 require('./blog')(router);
 require('./users')(router);
 
-//expot the module
+//export the module
 module.exports = router;
