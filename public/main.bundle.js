@@ -23,8 +23,8 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApiEndpoint; });
 // Api base url
-// const BaseUrl = 'https://calm-taiga-40248.herokuapp.com/api/';
-var BaseUrl = 'http://localhost:1010/api/';
+var BaseUrl = 'https://calm-taiga-40248.herokuapp.com/api/';
+// const BaseUrl = 'http://localhost:1010/api/';
 var ApiEndpoint = {
     LOGIN: BaseUrl + 'user/login',
     GETALLUSER: BaseUrl + 'user/getAll',
