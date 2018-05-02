@@ -23,7 +23,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApiEndpoint; });
 // Api base url
-var BaseUrl = 'http://localhost:8080/api/';
+var BaseUrl = 'https://calm-taiga-40248.herokuapp.com/api/';
 var ApiEndpoint = {
     LOGIN: BaseUrl + 'user/login',
     GETALLUSER: BaseUrl + 'user/getAll',
@@ -62,9 +62,9 @@ var AuthenticationService = (function () {
     function AuthenticationService(http) {
         this.http = http;
     }
-    AuthenticationService.prototype.login = function (value) {
-        console.log(value);
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__helpers_apiEndpoint__["a" /* ApiEndpoint */].LOGIN, value)
+    AuthenticationService.prototype.login = function (loginForm) {
+        var data = JSON.stringify({ 'email': loginForm.value.email, 'password': loginForm.value.password });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__helpers_apiEndpoint__["a" /* ApiEndpoint */].LOGIN, data)
             .map(function (response) {
             // login successful if there's a jwt token in the response
             var user = response.json();
@@ -273,10 +273,10 @@ var LoginComponent = (function () {
     LoginComponent.prototype.ngOnInit = function () {
     };
     // User login
-    LoginComponent.prototype.login = function (value) {
+    LoginComponent.prototype.login = function (loginForm) {
         var _this = this;
         // this.loading = true;
-        this.authenticationService.login(value)
+        this.authenticationService.login(loginForm)
             .subscribe(function (data) {
             console.log(data);
             _this.router.navigate([_this.returnUrl]);
