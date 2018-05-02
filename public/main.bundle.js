@@ -63,8 +63,10 @@ var AuthenticationService = (function () {
         this.http = http;
     }
     AuthenticationService.prototype.login = function (loginForm) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
+        headers.append('Content-Type', 'application/json');
         var data = JSON.stringify({ 'email': loginForm.value.email, 'password': loginForm.value.password });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__helpers_apiEndpoint__["a" /* ApiEndpoint */].LOGIN, data)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_4__helpers_apiEndpoint__["a" /* ApiEndpoint */].LOGIN, data, { headers: headers })
             .map(function (response) {
             // login successful if there's a jwt token in the response
             var user = response.json();
@@ -86,7 +88,7 @@ var AuthenticationService = (function () {
 }());
 AuthenticationService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], AuthenticationService);
 
 var _a;
@@ -204,7 +206,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* ReactiveFormsModule */],
             __WEBPACK_IMPORTED_MODULE_10__app_routes__["a" /* Routing */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_4__providers_authentication_service__["a" /* AuthenticationService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
