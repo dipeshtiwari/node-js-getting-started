@@ -13,8 +13,9 @@ exports.getUsers = function(req, res) {
 
 //user login
 exports.login = function(req, res, next) {
+    console.log(req.body.email);
+
     Users.findOne({ 'email': req.body.email }, 'password', function(err, user) {
-        console.log(user);
         const payload = {
             user: user._id
         };
