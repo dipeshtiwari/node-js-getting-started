@@ -63,3 +63,6 @@
 [0mOPTIONS /api/user/getAll [33m403 [0m1.178 ms - 48[0m
 [0mOPTIONS /api/user/getAll [33m403 [0m1.406 ms - 48[0m
 [0mOPTIONS /api/user/getAll [33m403 [0m1.254 ms - 48[0m
+[0mOPTIONS /api/user/login [32m200 [0m4.797 ms - 4[0m
+[0mPOST /api/user/login [32m200 [0m384.228 ms - 229[0m
+[0mOPTIONS /api/user/getAll [33m403 [0m2.286 ms - 48[0m
